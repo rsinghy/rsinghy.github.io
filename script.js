@@ -45,6 +45,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Project details expansion
     const expandBtns = document.querySelectorAll('.expand-btn');
+    
+    const checkOverflow = () => {
+        expandBtns.forEach(btn => {
+            const wrapper = btn.closest('.project-details-wrapper');
+            const content = wrapper.querySelector('.project-details-content');
+            
+            if (content.classList.contains('expanded')) return;
+            
+            const bullets = content.querySelectorAll('li');
+            let textLength = 0;
+            bullets.forEach(li => textLength += li.textContent.trim().length);
+            
+            if (bullets.length > 3 || textLength > 300) {
+                btn.style.display = 'inline-flex';
+                content.classList.remove('no-fade');
+            } else {
+                btn.style.display = 'none';
+                content.classList.add('no-fade');
+            }
+        });
+    };
+    
+    // Run after full page load to ensure fonts/layout are finalized
+    if (document.fonts) {
+        document.fonts.ready.then(checkOverflow);
+    } else {
+        window.addEventListener('load', checkOverflow);
+    }
+    window.addEventListener('resize', checkOverflow);
+
     expandBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             const wrapper = btn.closest('.project-details-wrapper');

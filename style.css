@@ -448,7 +448,7 @@ section {
 }
 
 .project-details-content {
-    max-height: 85px;
+    max-height: 115px;
     overflow: hidden;
     position: relative;
     transition: max-height 0.5s ease-in-out;
@@ -470,14 +470,19 @@ section {
     max-height: 1500px;
 }
 
-.project-details-content.expanded::after {
+.project-details-content.no-fade {
+    max-height: none;
+}
+
+.project-details-content.expanded::after,
+.project-details-content.no-fade::after {
     opacity: 0;
 }
 
 .expand-btn {
     background: none;
     border: none;
-    color: var(--accent-color);
+    color: var(--text-secondary);
     font-weight: 600;
     cursor: pointer;
     padding: 0;
