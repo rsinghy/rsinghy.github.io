@@ -444,58 +444,61 @@ section {
 }
 
 .project-details-wrapper {
-    max-height: 90px;
-    overflow: hidden;
-    position: relative;
-    transition: max-height 0.4s ease;
     margin-top: 1rem;
 }
 
-.project-details-wrapper::after {
+.project-details-content {
+    max-height: 85px;
+    overflow: hidden;
+    position: relative;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.project-details-content::after {
     content: "";
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%;
-    height: 30px;
+    right: 0;
+    height: 40px;
     background: linear-gradient(to bottom, transparent, var(--surface-color));
     pointer-events: none;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.5s ease;
 }
 
-.project-details-wrapper.expanded::after,
-.project-details-wrapper.no-overflow::after {
+.project-details-content.expanded {
+    max-height: 1500px;
+}
+
+.project-details-content.expanded::after {
     opacity: 0;
 }
 
-.project-details-wrapper.expanded {
-    max-height: 800px;
-}
-
-.dropdown-toggle-btn {
+.expand-btn {
     background: none;
     border: none;
     color: var(--accent-color);
     font-weight: 600;
     cursor: pointer;
-    margin-top: 0.5rem;
+    padding: 0;
+    margin-top: 0.75rem;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     font-family: inherit;
     font-size: 0.95rem;
-    padding: 0;
+    transition: var(--transition);
 }
 
-.dropdown-toggle-btn:hover {
-    text-decoration: underline;
+.expand-btn:hover {
+    color: var(--text-primary);
 }
 
-.dropdown-toggle-btn i {
+.expand-btn i {
     transition: transform 0.3s ease;
 }
 
-.dropdown-toggle-btn.expanded i {
+.expand-btn.expanded i {
     transform: rotate(180deg);
 }
 

@@ -43,31 +43,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Project details overflow toggle logic
-    const detailWrappers = document.querySelectorAll('.project-details-wrapper');
-    detailWrappers.forEach(wrapper => {
-        // Wait for CSS to apply layout
-        setTimeout(() => {
-            if (wrapper.scrollHeight > wrapper.clientHeight + 10) {
-                const btn = document.createElement('button');
-                btn.className = 'dropdown-toggle-btn';
-                btn.innerHTML = 'View Project Details <i class="fa-solid fa-chevron-down"></i>';
-                
-                btn.onclick = () => {
-                    wrapper.classList.toggle('expanded');
-                    btn.classList.toggle('expanded');
-                    if (wrapper.classList.contains('expanded')) {
-                        btn.innerHTML = 'Collapse Project Details <i class="fa-solid fa-chevron-down"></i>';
-                    } else {
-                        btn.innerHTML = 'View Project Details <i class="fa-solid fa-chevron-down"></i>';
-                    }
-                };
-                
-                // Insert button right after the wrapper
-                wrapper.parentNode.insertBefore(btn, wrapper.nextSibling);
+    // Project details expansion
+    const expandBtns = document.querySelectorAll('.expand-btn');
+    expandBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const wrapper = btn.closest('.project-details-wrapper');
+            const content = wrapper.querySelector('.project-details-content');
+            
+            const isExpanded = content.classList.toggle('expanded');
+            btn.classList.toggle('expanded');
+            
+            if (isExpanded) {
+                btn.innerHTML = 'Read Less <i class="fa-solid fa-chevron-up"></i>';
             } else {
-                wrapper.classList.add('no-overflow');
+                btn.innerHTML = 'Read More <i class="fa-solid fa-chevron-down"></i>';
             }
-        }, 200);
+        });
     });
+
 });
