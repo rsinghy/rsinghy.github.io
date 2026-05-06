@@ -67,11 +67,15 @@ body {
 }
 
 section {
-    padding: 100px 0;
-    min-height: 100vh;
+    padding: 80px 0;
+    min-height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.compact-section {
+    padding: 30px 0 !important;
 }
 
 .section-title {
@@ -333,7 +337,7 @@ section {
 
 .timeline-item {
     position: relative;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     padding-left: 60px;
 }
 
@@ -847,4 +851,352 @@ section {
         position: static;
         margin-bottom: 2rem;
     }
+}
+
+/* Profile Card & Sidebar Contact */
+.profile-card {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+}
+
+.profile-img-container {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 0 20px rgba(234, 88, 12, 0.2);
+    transition: var(--transition);
+}
+
+.profile-img-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(234, 88, 12, 0.4);
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-name {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.profile-tagline {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.sidebar-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+}
+
+.contact-link i {
+    font-size: 1.1rem;
+    color: var(--accent-color);
+}
+
+.contact-link:hover {
+    background: var(--accent-gradient);
+    color: white;
+    transform: translateX(5px);
+}
+
+.contact-link:hover i {
+    color: white;
+}
+
+/* About Section */
+.about-card {
+    padding: 2.5rem;
+}
+
+.about-text {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.about-text strong {
+    color: var(--text-primary);
+}
+
+/* Contact Section Grid */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+
+.contact-item {
+    padding: 1.5rem;
+}
+
+.contact-item i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.contact-item h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.contact-item p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+/* Navbar Profile Picture */
+.nav-logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.nav-logo-container:hover {
+    transform: scale(1.02);
+}
+
+.nav-pfp {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 10px rgba(234, 88, 12, 0.2);
+}
+
+/* Forked Horizontal Timeline Styles */
+.about-timeline {
+    position: relative;
+    padding: 18rem 2rem; /* Reduced side padding */
+    margin: 3rem -2rem; /* Bleed out of container padding */
+    overflow-x: visible; /* Prevent any clipping */
+    overflow-y: visible;
+    min-height: 850px;
+    width: calc(100% + 4rem);
+    display: block;
+    z-index: 10; /* Move to front */
+}
+
+.about-timeline::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--accent-gradient);
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.timeline-event {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    z-index: 2;
+}
+
+/* Singular start-date leg by default */
+.timeline-event::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: var(--accent-color);
+    opacity: 0.4;
+    transition: var(--transition);
+    left: 0;
+}
+
+/* Remove end-date leg by default */
+.timeline-event::after {
+    display: none;
+}
+
+/* Exception for University: show duration with two legs */
+.timeline-event.is-university::after {
+    display: block;
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: var(--accent-color);
+    opacity: 0.4;
+    transition: var(--transition);
+    right: 0;
+}
+
+/* Event Content Box */
+.event-content {
+    position: absolute;
+    width: 240px;
+    background: var(--surface-color);
+    backdrop-filter: blur(12px);
+    padding: 1.25rem;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+    z-index: 3;
+}
+
+.timeline-event:hover .event-content {
+    transform: scale(1.05);
+    border-color: var(--accent-color);
+    box-shadow: 0 12px 35px rgba(234, 88, 12, 0.15);
+}
+
+.timeline-event:hover::before,
+.timeline-event.is-university:hover::after {
+    opacity: 1;
+    width: 3px;
+}
+
+/* Staggering Logic (Alternating Above/Below and Height) */
+.timeline-event.up-1 .event-content { bottom: calc(50% + 40px); left: -120px; text-align: center; }
+.timeline-event.up-1::before { bottom: 50%; height: 40px; }
+.timeline-event.up-1.is-university::after { bottom: 50%; height: 40px; }
+
+.timeline-event.down-1 .event-content { top: calc(50% + 40px); left: -120px; text-align: center; }
+.timeline-event.down-1::before { top: 50%; height: 40px; }
+.timeline-event.down-1.is-university::after { top: 50%; height: 40px; }
+
+.timeline-event.up-2 .event-content { bottom: calc(50% + 160px); left: -120px; text-align: center; }
+.timeline-event.up-2::before { bottom: 50%; height: 160px; }
+.timeline-event.up-2.is-university::after { bottom: 50%; height: 160px; }
+
+.timeline-event.down-2 .event-content { top: calc(50% + 160px); left: -120px; text-align: center; }
+.timeline-event.down-2::before { top: 50%; height: 160px; }
+.timeline-event.down-2.is-university::after { top: 50%; height: 160px; }
+
+/* Year labels and ticks on axis */
+.timeline-axis-labels {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    left: 0;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.axis-tick {
+    position: absolute;
+    top: 0;
+    width: 2px;
+    height: 12px;
+    background: var(--accent-color);
+    transform: translateY(-50%);
+}
+
+.axis-year {
+    position: absolute;
+    top: 20px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--text-secondary);
+    opacity: 0.7;
+    transform: translateX(-50%); /* Centered on the tick */
+    white-space: nowrap;
+}
+
+.event-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.event-date-label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--accent-color);
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.event-desc {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .about-timeline {
+        padding: 5rem 0;
+        overflow-x: auto;
+    }
+}
+
+/* Navbar UX Refinement */
+.nav-btn.external::after {
+    content: '\f105'; /* FontAwesome chevron-right icon */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 0.7rem;
+    opacity: 0.5;
+}
+
+.nav-separator {
+    width: 2px;
+    height: 24px;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1), transparent);
+    margin: 0 0.75rem;
+    list-style: none;
+}
+
+@media (max-width: 768px) {
+    .about-timeline::before {
+        display: none;
+    }
+    .timeline-event::after {
+        display: none;
+    }
+    .nav-separator {
+        display: none;
+    }
+}
+
+/* Footer Styling */
+.footer {
+    text-align: center;
+    padding: 3rem 0;
+    margin-top: 4rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
 }
