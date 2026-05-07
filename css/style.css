@@ -384,6 +384,45 @@ section {
 }
 
 /* Projects Section */
+.projects-scroll-area {
+    max-height: 85vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 1.5rem 1.5rem 3rem 1rem;
+    margin: -1.5rem -1.5rem 0 -1rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) transparent;
+    position: relative;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.08); /* Subtle gray border matching skills cards */
+}
+
+/* Subtle fade effect at the bottom of the scroll area */
+.projects-scroll-area::after {
+    content: '';
+    position: sticky;
+    bottom: -3rem; /* Aligned with bottom padding */
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.8));
+    pointer-events: none;
+    z-index: 5;
+    display: block;
+}
+
+.projects-scroll-area::-webkit-scrollbar {
+    width: 6px;
+}
+
+.projects-scroll-area::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.projects-scroll-area::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color);
+    border-radius: 10px;
+}
+
 .projects-flex {
     display: flex;
     flex-direction: column;
