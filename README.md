@@ -1,4 +1,5 @@
 # personal-portfolio
-A repository for my website, showcasing my portfolio.
+A repository for my website.
+https://rsinghy.github.io/
 
-Created using Antigravity's agentic-AI driven development.
+AI assisted development.
